@@ -27,7 +27,7 @@ const Course = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3005/course")
+      .get("https://vercel-atualizado-mds.vercel.app/course")
       .then((response) => setUsers(response.data))
       .catch((err) => console.log(err));
   }, []);
@@ -35,14 +35,17 @@ const Course = () => {
   const sendData = async (values, { resetForm }) => {
     try {
       const id = users.length > 0 ? users[users.length - 1].id + 1 : 1;
-      const response = await axios.post("http://localhost:3005/course", {
-        id: id,
-        name: values.name,
-        course: values.course,
-        info: values.info,
-        conclusiondate: values.conclusiondate,
-        expirationdate: values.expirationdate,
-      });
+      const response = await axios.post(
+        "https://vercel-atualizado-mds.vercel.app/course",
+        {
+          id: id,
+          name: values.name,
+          course: values.course,
+          info: values.info,
+          conclusiondate: values.conclusiondate,
+          expirationdate: values.expirationdate,
+        }
+      );
 
       if (response.status === 201) {
         setUsers([...users, response.data]);
@@ -77,9 +80,9 @@ const Course = () => {
 
   const topics = (course) => {
     if (course && course.length > 0) {
-      return course.split(",").map((topics, index) => (
-        <div key={index}>{topics}</div>
-      ));
+      return course
+        .split(",")
+        .map((topics, index) => <div key={index}>{topics}</div>);
     }
     return "";
   };
@@ -98,9 +101,9 @@ const Course = () => {
   return (
     <div className="page-container">
       <div className="content-container">
-      <div className="logo" onClick={goToEmployees}>
+        <div className="logo" onClick={goToEmployees}>
           <img src={logo} alt="SONDA Engenharia" className="sonda" />
-          </div>
+        </div>
         <div className="form">
           <Formik
             initialValues={initialValues}
@@ -108,13 +111,25 @@ const Course = () => {
             validationSchema={validationSchema}
           >
             <Form>
-              <Field type="text" name="name" placeholder="  Nome do funcionário" />
+              <Field
+                type="text"
+                name="name"
+                placeholder="  Nome do funcionário"
+              />
               <ErrorMessage name="name" component="span" />
 
-              <Field type="text" name="course" placeholder="  Código do curso" />
+              <Field
+                type="text"
+                name="course"
+                placeholder="  Código do curso"
+              />
               <ErrorMessage name="course" component="span" />
 
-              <Field type="text" name="info" placeholder="  Informações do curso" />
+              <Field
+                type="text"
+                name="info"
+                placeholder="  Informações do curso"
+              />
               <ErrorMessage name="info" component="span" />
 
               <Field

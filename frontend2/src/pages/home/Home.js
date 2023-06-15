@@ -21,12 +21,14 @@ function Home() {
   }, [navigateTo]);
 
   useEffect(() => {
-    axios.get("http://localhost:3005/employeeinfo").then((response) => {
-      const sortedEmployees = response.data.sort((a, b) =>
-        a.name.localeCompare(b.name)
-      );
-      setListOfEmployees(sortedEmployees);
-    });
+    axios
+      .get("https://vercel-atualizado-mds.vercel.app/employeeinfo")
+      .then((response) => {
+        const sortedEmployees = response.data.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        setListOfEmployees(sortedEmployees);
+      });
   }, []);
 
   const goToRegister = () => {

@@ -24,7 +24,7 @@ function EmployeeCourses() {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:3005/employeeinfo/byId/${id}`)
+        .get(`https://vercel-atualizado-mds.vercel.app/employeeinfo/byId/${id}`)
         .then((response) => {
           showCourses(response.data.name);
         })
@@ -36,7 +36,7 @@ function EmployeeCourses() {
 
   const showCourses = (name) => {
     axios
-      .get(`http://localhost:3005/course?name=${name}`)
+      .get(`https://vercel-atualizado-mds.vercel.app/course?name=${name}`)
       .then((response) => {
         const employeeCourses = response.data.filter(
           (course) => course.name === name
@@ -53,9 +53,9 @@ function EmployeeCourses() {
       <div className="main-table">
         <div className="table-employees">
           <div className="header" onClick={goToEmployees}>
-          <div className="logo" onClick={goToEmployees}>
-          <img src={logo} alt="SONDA Engenharia" className="sonda" />
-          </div>
+            <div className="logo" onClick={goToEmployees}>
+              <img src={logo} alt="SONDA Engenharia" className="sonda" />
+            </div>
           </div>
           <h2>Cursos do Funcionário</h2>
           <table>
@@ -77,10 +77,14 @@ function EmployeeCourses() {
                     <div className="info">{course.info}</div>
                   </td>
                   <td>
-                    <div className="conclusiondate">{course.conclusiondate}</div>
+                    <div className="conclusiondate">
+                      {course.conclusiondate}
+                    </div>
                   </td>
                   <td>
-                    <div className="expirationdate">{course.expirationdate}</div>
+                    <div className="expirationdate">
+                      {course.expirationdate}
+                    </div>
                   </td>
                 </tr>
               ))}

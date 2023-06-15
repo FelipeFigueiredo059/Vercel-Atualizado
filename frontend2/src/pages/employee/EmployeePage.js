@@ -25,7 +25,7 @@ function EmployeePage() {
   useEffect(() => {
     if (id) {
       axios
-        .get(`http://localhost:3005/employeeinfo/byId/${id}`)
+        .get(`https://vercel-atualizado-mds.vercel.app/employeeinfo/byId/${id}`)
         .then((response) => {
           setEmployeeObject(response.data);
         });
@@ -35,9 +35,9 @@ function EmployeePage() {
   return (
     <div className="postPage">
       <div className="header">
-      <div className="logo" onClick={goToEmployees}>
+        <div className="logo" onClick={goToEmployees}>
           <img src={logo} alt="SONDA Engenharia" className="sonda" />
-          </div>
+        </div>
       </div>
       <div className="post" id="individual">
         <h1>Funcionário</h1>
