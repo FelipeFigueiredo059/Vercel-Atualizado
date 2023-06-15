@@ -21,6 +21,6 @@ app.use("/course", courseRoute);
 
 database.sequelize.sync().then(() => {
   app.listen(PORT, () => {
-    console.log("Servidor está rodando na porta 3005");
+    console.log("Servidor está rodando na porta 8080");
   });
 });
